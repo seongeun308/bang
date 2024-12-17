@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org" lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<div>
+    <h1>노트 수정</h1>
+</div>
+<form th:object="${note}" th:action="@{/folders/{folderId}/notes/{noteId}/edit(folderId=${note.folder.id}, noteId=${noteId})}" method="post">
+    <div>
+        <label for="name">폴더명</label>
+        <input type="text" id="name" name="name" th:field="*{name}">
+    </div>
+    <div>
+        <button type="submit">수정</button>
+        <button th:onclick="|location.href='@{/folders/{folderId}/notes/{noteId}(folderId=${note.folder.id}, noteId=${noteId})}'|" type="button">취소</button>
+    </div>
+</form>
+</body>
+</html>
